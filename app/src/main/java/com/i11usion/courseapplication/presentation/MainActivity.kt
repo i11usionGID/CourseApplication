@@ -1,14 +1,15 @@
-package com.i11usion.courseapplication
+package com.i11usion.courseapplication.presentation
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.i11usion.feature_auth.LoginFragment
-import com.i11usion.feature_auth.LoginNavigation
-import com.i11usion.feature_main.AccountFragment
-import com.i11usion.feature_main.FavoritesFragment
-import com.i11usion.feature_main.MainFragment
+import com.i11usion.core.navigation.LoginNavigation
+import com.i11usion.courseapplication.R
+import com.i11usion.feature_auth.presentation.LoginFragment
+import com.i11usion.feature_main.presentation.account.AccountFragment
+import com.i11usion.feature_main.presentation.favorite.FavoritesFragment
+import com.i11usion.feature_main.presentation.main.MainFragment
 
 class MainActivity : AppCompatActivity(), LoginNavigation {
 

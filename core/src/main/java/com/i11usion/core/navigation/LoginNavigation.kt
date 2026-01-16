@@ -1,4 +1,4 @@
-package com.i11usion.feature_auth
+package com.i11usion.core.navigation
 
 interface LoginNavigation {
     fun onLoginSuccess()
