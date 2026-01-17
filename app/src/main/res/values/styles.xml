@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LightGrayActiveIndicator"
+        parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/light_gray</item>
+    </style>
+
+    <style name="BottomNavItemText"
+        parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/roboto_semibold</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+</resources>
