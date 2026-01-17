@@ -1,4 +1,4 @@
-package com.i11usion.core.ui.viewBinding
+package com.i11usion.core.utils.viewBinding
 
 import android.view.View
 import androidx.fragment.app.Fragment

@@ -2,6 +2,7 @@ package com.i11usion.courseapplication.di
 
 import android.content.Context
 import com.i11usion.core.di.ApplicationScope
+import com.i11usion.core.di.LocalModule
 import com.i11usion.core.di.NetworkModule
 import com.i11usion.core.di.ViewModelFactoryModule
 import com.i11usion.courseapplication.CourseApplication
@@ -20,7 +21,8 @@ import dagger.Component
         MainModule::class,
         ViewModelFactoryModule::class,
         LoginViewModelModule::class,
-        MainViewModelModule::class
+        MainViewModelModule::class,
+        LocalModule::class
     ]
 )
 interface AppComponent {
