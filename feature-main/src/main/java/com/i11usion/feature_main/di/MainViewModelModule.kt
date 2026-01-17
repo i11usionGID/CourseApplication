@@ -2,6 +2,7 @@ package com.i11usion.feature_main.di
 
 import androidx.lifecycle.ViewModel
 import com.i11usion.core.di.ViewModelKey
+import com.i11usion.feature_main.presentation.favorite.FavoriteViewModel
 import com.i11usion.feature_main.presentation.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -14,4 +15,9 @@ interface MainViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteViewModel::class)
+    fun bindFavoriteViewModel(viewModel: FavoriteViewModel): ViewModel
 }

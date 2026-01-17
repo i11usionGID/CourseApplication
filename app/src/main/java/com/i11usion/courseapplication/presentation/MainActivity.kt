@@ -21,13 +21,12 @@ class MainActivity : AppCompatActivity(), LoginNavigation {
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
-//        if (savedInstanceState == null) {
-//            bottomNavigation.visibility = View.GONE
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.mainContainer, LoginFragment())
-//                .commit()
-//        }
-        showMainScreen()
+        if (savedInstanceState == null) {
+            bottomNavigation.visibility = View.GONE
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.mainContainer, LoginFragment())
+                .commit()
+        }
     }
 
     override fun onLoginSuccess() {

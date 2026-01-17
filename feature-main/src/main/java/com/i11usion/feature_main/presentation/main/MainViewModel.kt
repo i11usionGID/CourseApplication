@@ -25,6 +25,12 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             insertCoursesUseCase()
+            getCourses()
+        }
+    }
+
+    fun getCourses() {
+        viewModelScope.launch {
             val courses = getCoursesUseCase()
             _state.value = MainFragmentState(courses = courses)
         }
@@ -41,19 +47,28 @@ class MainViewModel @Inject constructor(
                     it
                 }
             }
-            _state.value = MainFragmentState(newCourses)
+            _state.value = MainFragmentState(courses = newCourses, isSorted = state.value.isSorted)
         }
     }
 
     fun sortCoursesByDate() {
         viewModelScope.launch {
             val sortCourses = sortCoursesByDateUseCase()
-            _state.value = MainFragmentState(courses = sortCourses, needToScroll = true)
+            _state.value =
+                MainFragmentState(courses = sortCourses, isSorted = true, needToScroll = true)
+        }
+    }
+
+    fun getSortedCoursesByDate() {
+        viewModelScope.launch {
+            val sortCourses = sortCoursesByDateUseCase()
+            _state.value = MainFragmentState(courses = sortCourses, isSorted = true)
         }
     }
 }
 
 data class MainFragmentState(
     val courses: List<Course>,
+    val isSorted: Boolean = false,
     val needToScroll: Boolean = false
 )

@@ -23,6 +23,7 @@ import javax.inject.Inject
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: LoginViewModel by viewModels { viewModelFactory }
@@ -35,7 +36,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val factoryProvider = requireActivity().application as ViewModelFactoryProvider
         viewModelFactory = factoryProvider.provideViewModelFactory()
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
