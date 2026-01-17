@@ -21,12 +21,13 @@ class MainActivity : AppCompatActivity(), LoginNavigation {
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
-        if (savedInstanceState == null) {
-            bottomNavigation.visibility = View.GONE
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.mainContainer, LoginFragment())
-                .commit()
-        }
+//        if (savedInstanceState == null) {
+//            bottomNavigation.visibility = View.GONE
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.mainContainer, LoginFragment())
+//                .commit()
+//        }
+        showMainScreen()
     }
 
     override fun onLoginSuccess() {
@@ -36,30 +37,52 @@ class MainActivity : AppCompatActivity(), LoginNavigation {
 
     private fun showMainScreen() {
         bottomNavigation.visibility = View.VISIBLE
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, MainFragment())
-            .commit()
+
+        if (supportFragmentManager.findFragmentByTag(MAIN_TAG) == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.mainContainer, MainFragment(), MAIN_TAG)
+                .commit()
+        }
 
         setupBottomNavigation()
     }
 
-    private fun setupBottomNavigation() {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
-        bottomNav.setOnItemSelectedListener { item ->
+    private fun setupBottomNavigation() {
+        bottomNavigation.setOnItemSelectedListener { item ->
+            val fm = supportFragmentManager
+            val transaction = fm.beginTransaction()
+
+            fm.fragments.forEach { transaction.hide(it) }
+
             val fragment = when (item.itemId) {
-                R.id.menu_main -> MainFragment()
-                R.id.menu_favorites -> FavoritesFragment()
-                R.id.menu_account -> AccountFragment()
+                R.id.menu_main ->
+                    fm.findFragmentByTag(MAIN_TAG) ?: MainFragment().also {
+                        transaction.add(R.id.mainContainer, it, MAIN_TAG)
+                    }
+
+                R.id.menu_favorites ->
+                    fm.findFragmentByTag(FAVORITE_TAG) ?: FavoritesFragment().also {
+                        transaction.add(R.id.mainContainer, it, FAVORITE_TAG)
+                    }
+
+                R.id.menu_account ->
+                    fm.findFragmentByTag(ACCOUNT_TAG) ?: AccountFragment().also {
+                        transaction.add(R.id.mainContainer, it, ACCOUNT_TAG)
+                    }
+
                 else -> null
             }
 
-            fragment?.let {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainContainer, it)
-                    .commit()
-                true
-            } ?: false
+            fragment?.let { transaction.show(it) }
+            transaction.commit()
+            true
         }
+    }
+
+    companion object {
+        private const val MAIN_TAG = "main"
+        private const val FAVORITE_TAG = "fav"
+        private const val ACCOUNT_TAG = "acc"
     }
 }

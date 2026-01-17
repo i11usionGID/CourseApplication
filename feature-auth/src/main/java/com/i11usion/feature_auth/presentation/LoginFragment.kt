@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.i11usion.core.di.ViewModelFactoryProvider
 import com.i11usion.core.navigation.LoginNavigation
-import com.i11usion.core.ui.viewBinding.viewBinding
+import com.i11usion.core.utils.viewBinding.viewBinding
 import com.i11usion.feature_auth.R
 import com.i11usion.feature_auth.databinding.FragmentLoginBinding
 import kotlinx.coroutines.launch
