@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tools_course_description">Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании.</string>
+    <string name="cd_more_course_information">Кнопка для перехода к подробному описанию курса</string>
+    <string name="cd_add_favorite_course">Добавить курс в избранное</string>
+    <string name="cd_course_preview">Превью курса</string>
+    <string name="cd_user_rating">Оценки пользователей</string>
+    <string name="search_courses">Search courses...</string>
+    <string name="filter_text">По дате добавления</string>
+    <string name="cd_filter_date">Фильтрация курсов по дате добавления</string>
+    <string name="cd_choose_filter">Выбор фильтрации</string>
+    <string name="cd_search_corse_by_name_or_description">Окно для поиска курсов по названию или описанию</string>
+    <string name="more_information">Подробнее</string>
+    <string name="favorite">Избранное</string>
+</resources>
