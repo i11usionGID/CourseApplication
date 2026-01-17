@@ -21,4 +21,7 @@ interface CourseDao {
     @Query("SELECT * FROM courses ORDER BY publishDate DESC")
     suspend fun sortCoursesByDate(): List<CourseDbModel>
 
+    @Query("SELECT * FROM courses WHERE hasLike = 1")
+    suspend fun getFavoriteCourses(): List<CourseDbModel>
+
 }

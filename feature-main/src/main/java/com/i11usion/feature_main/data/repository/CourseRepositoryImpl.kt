@@ -19,6 +19,12 @@ class CoursesRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getFavoriteCourses(): List<Course> {
+        return dao.getFavoriteCourses().map { courses ->
+            courses.dbModelToDomain()
+        }
+    }
+
     override suspend fun insertCourses() {
         val entities = service.getCourses()
             .courses

@@ -82,6 +82,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            if (viewModel.state.value.isSorted) {
+                viewModel.getSortedCoursesByDate()
+            } else {
+                viewModel.getCourses()
+            }
+        }
+    }
 
     companion object {
         private const val RV_STATE_KEY = "rv_state"
